@@ -1,0 +1,64 @@
+
+<html>
+
+<head>
+
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<title>New Class</title>
+	<link href="http://bgrins.github.io/spectrum/spectrum.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,800i" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Add a New Class</h1>
+		<div class="col-md-4"></div>
+		<div class="col-md-4" class="login-form-inner">
+			<div class="form-box">
+				<form method="POST" action="/cgi-bin/new-class.py">
+					<p>
+						Class Name (required):<br> 
+						<input type="text" name="name" /><br>
+						<br>
+						Day(s) of the week:<br>
+
+
+						Mon <input type="checkbox" name="day" value="Monday">
+						Tues <input type="checkbox" name="day" value="Tuesday">
+						Wed <input type="checkbox" name="day" value="Wednesday">
+						Thurs <input type="checkbox" name="day" value="Thursday"><br>
+						Fri <input type="checkbox" name="day" value="Friday">
+						Sat <input type="checkbox" name="day" value="Saturday">
+						Sun <input type="checkbox" name="day" value="Sunday"><br>
+
+						<br>
+
+						Meeting Time:    <br><input class="time-entry" type="time" name="time" /><br> 
+						<br>
+
+						Location:    <br><input type="textarea" rows="5" name="location" /><br>
+						<br>Instructor Name:   <br><input type="text" name="instructor" /><br><br>
+						Class Color:    <input class="colorSelector" type='color' name='color' value='#3355cc' />
+
+						<br>
+						<br>
+						Notes (optional): <br> <textarea name="notes" id="notes" class="inputClass" value="notes" rows="3" cols="30"></textarea>
+					</p>
+					<input type="submit">
+				</form>
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<script src="http://bgrins.github.io/spectrum/spectrum.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="login.js"></script>
+	<script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>  
+	<script type="text/javascript">
+</body>
+</html>
+
+

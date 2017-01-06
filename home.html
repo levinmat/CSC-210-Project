@@ -1,0 +1,101 @@
+<html>
+
+<head>
+	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,800i" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="modal.css">
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" href="css/style.css"> 
+
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="home.js"></script>
+
+	<title>Egenda</title>
+
+</head>
+<body onload="checkCookie()">
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand special-text-x2" href="home.html">Egenda</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="special-text" href="home.html">Home</a></li>
+					<li><a class="special-text" href="about.html">About</a></li>	
+					<li><a class="special-text" href="../cgi-bin/logout.py">Log Out</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="col-md-3">
+		<h2>My Classes</h2>
+		<div class="scrollableBox">
+			<br>
+			<button type="button" class="btn btn-default"><a class="special-text-small" href="new-class.html">New Class</a></button>
+			
+			<div id="getClasses">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h2>Current Assignments</h2>
+		<div class="scrollableBox">
+			<!-- Button to add a new assignment in a popup form -->
+			<br>
+			<button id="myBtn" type="button" class="btn btn-default"><a class="special-text-small">New Assignment</a></button>
+			<!-- <button id="myBtn" class="special-text">Add a new Assignment</button> -->
+
+			<div id="getAssignments">
+			</div>
+			<!-- Trigger/Open The Modal -->
+
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+
+				<!-- Modal content -->
+
+				<div class="modal-content">
+					<span class="close">Close</span><br><br><br>
+					<h4>Add an Assignment</h4>
+
+					<form class="form-data" style="color:white;">
+
+						Name of Assignment<br><input type="text" name="name"></input><br><br>
+						Class<br><select name="className" id="getClassDropdown"></select><br><br>
+						Due Date<br><input type="date" name="date"></input><br><br>
+						Due Time<br><input type="time" name="time"></input><br><br>
+						Additional Information<br><input type="text" name="notes"></input><br><br>
+						<input type="submit" name="submit" id="submitButtonId" class="submit"></input>
+					</form>					
+				</div>
+			</div>
+
+			<div id="editModal" class="modal">
+				<div class="modal-content">
+					<span class="close">Close</span>
+					<div id="getModalData"> <!-- Updated by py script -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<h2>Calendar</h2>
+		<div class="scrollableBox">
+			<div id="calendar"></div>
+			<script src="js/moment.js"></script>
+			<script src="js/index.js"></script>
+		</div>
+	</div>
+	<div class="deleteButton"></div>
+	<script src="modal.js"></script>
+</body>
+</html>

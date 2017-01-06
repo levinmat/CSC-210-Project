@@ -1,0 +1,8 @@
+img.align-left {
+	float left;
+	margin-right: 10 px;}
+	img.medium {
+		width: 250 px;
+		height: 250 px;
+	}
+}

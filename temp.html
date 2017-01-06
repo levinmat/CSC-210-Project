@@ -1,0 +1,68 @@
+<html>
+<!-- Outlines the technologies interaction for Milestone 4 -->
+<head>
+	<script src="jquery-2.0.3.js"></script>
+	<script>
+
+	// From w3shools.com
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+	// Redirect to login page if not logged in
+	function checkCookie() {
+		var user=getCookie("userid");
+		var remembered = getCookie("remembered");
+		if (user == "") {
+			window.location = "../index.html";
+		}
+	}
+
+	// Ajax request to Python script to get list of assignments as HTML
+	$(function getAssignments() {
+		$.ajax({
+			url: "/cgi-bin/getAssignments.py",
+			type: "post",
+			datatype: "html",
+			data: {
+                webArguments: getCookie('userid') //Arguments for py
+            },
+            success: function(response){
+            	$("#getAssignments").html(response);
+            },
+            complete: function() {
+                setTimeout(getAssignments, 2000);   //Refresh value every 2 seconds
+            }
+        });
+	});
+	</script>
+</head>
+
+<body onload="checkLoggedIn">
+
+	<button action="addAssignmentPopup">Add an Assignment</button>
+
+	<form action="addAssignment.py">
+
+
+	</form>
+
+	<div id="assignmentsOuter">
+		<h1>Assignments</h1>
+		<div id="getAssignments"> </div>
+
+	</div>
+
+</body>
+
+</html>

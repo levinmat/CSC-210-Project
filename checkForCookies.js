@@ -1,6 +1,5 @@
 
-// Taken from w3schools.com
-	function getCookie(cname) {
+function getCookie(cname) {
 		var name = cname + "=";
 		var ca = document.cookie.split(';');
 		for(var i = 0; i < ca.length; i++) {
@@ -15,12 +14,11 @@
 		return "";
 	}
 
-	// Redirects to login if not logged in
-	function checkCookie() {
+function checkCookie() {
 		var user=getCookie("userid");
 		var remembered = getCookie("remembered");
-		if (user != "") {
-			window.location = "home.html";
+		if (user == "") {
+			window.location = "../index.html";
 		}
 	}
 

@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link rel="icon" href="favicon.png">
+	<link rel="stylesheet" type="text/css" href="loginStyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,800i" rel="stylesheet">
+	<title>Egenda Create an Account</title>
+</head>
+<body>
+	<div class="document">
+		<div class="login-form">
+			<div class="login-form-title">
+				<h1>Egenda</h1>
+			</div>
+			
+			<h2 id="newAccountLabel">Create a New Account:</h2>
+			<!-- Form that sends its data to the python script -->
+			<!-- Uses a POST request so the data is not shown in the URL -->
+			<div class="login-form-inner">
+				<form method="POST" action="/cgi-bin/new-account.py">
+					<!-- <p>Username (required): </p><br> -->
+					<div class="login-form-inner-text">
+						<input type="text" name="username" placeholder=" Username" id="usernameText">
+						<br>
+						<!-- <p>Password (required): </p><br> -->
+						<input type="password" name="password" placeholder=" Password" id="passwordText">
+						<br>
+						<input type="password" name="confirm" placeholder=" Confirm Password" id="confirmPassword">
+						<br>
+						<input type="submit" name="Log In" id="submitButton">
+					</div>
+				</form>	
+
+
+			</div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</html>

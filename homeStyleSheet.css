@@ -1,0 +1,335 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+hr {
+	margin: 4% 3%;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.page-wrapper {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	height: 13%;
+	width: 100%;
+	margin: 0;
+	border-bottom: 7px solid black;
+	background-image:
+    url('wood-floor.jpg');
+    -webkit-background-size: 100%;
+  	-moz-background-size: 100%;
+  	-o-background-size: 100%;
+  	background-size: 100%;
+  	background-attachment: fixed;
+  	overflow: hidden;
+}
+
+.logo {
+	height: 100%;
+	width: 15%;
+	margin: 0 10% 0 10%;
+	float: left;
+	
+}
+
+.logo-text {
+	height: 35%;
+	width: 60%;
+	color: white;
+	font-size: 250%;
+	margin: 10% 8.5%;
+	font-weight: bold;
+	font-family: 'Raleway', sans-serif;
+}
+
+.navbar {
+	height: 100%;
+	width: 65%;
+	float: left;
+}
+
+.navbar-text {
+	height: 70%;
+	width: 95.5%;
+	margin: 1.5% 2.5%;
+	float: left;
+}
+
+.navbar-text ul {
+    list-style-type: none;
+    padding: 0 1%;
+    overflow: hidden;
+    margin: 3% 0;
+}
+
+.navbar-text li {
+    float: left;
+    margin: 0 8%;
+    font-size: 120%;
+}
+
+.navbar-text li a {
+    display: block;
+    font-weight: 800;
+    color: black;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-button {
+	transition: .05s all;
+}
+
+.calendar {
+	height: 86%;
+	width: 35%;
+	margin: 0;
+	padding: 0;
+	background-color: none; 
+	float: left;
+	border-right: 7px solid black;
+	border-radius: 5px;
+	background-image:
+}
+
+.month {
+	margin: 0;
+	padding: 20% 0;
+    width: 100%;
+    background: #78a795;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 160%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 3% 0 3% 5%;
+    background-color: #ddd;
+    font-size: 120%;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 11.6%;
+    color: #666;
+    text-align: center;
+    margin: 0 .5%;
+}
+
+.days {
+    padding: 3% 0 3% 5%;
+    background:
+    url('wood-floor.jpg');
+    -webkit-background-size: 100%;
+  	-moz-background-size: 100%;
+  	-o-background-size: 100%;
+  	background-size: 100%;
+  	background-attachment: fixed;
+  	overflow: hidden;
+    margin: 0;
+}
+
+.days li {
+    width: 10.9%;
+    height: 6.9%;
+    font-size: 110%;
+    margin: 0 1% 2% 0;
+    line-height: 230%;
+    border-radius: 5px;
+    text-align: center;
+    list-style-type: none;
+    display: inline-block;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.days li:hover {
+	background-color: #78a795;
+	color: white;
+	cursor: pointer;
+}
+
+.main-content {
+	height: 86%;
+	width: 64.45%;
+	margin: 0;
+	padding: 0;
+	float: left;
+	background-image:
+	url('wood-floor.jpg');
+    -webkit-background-size: 100%;
+  	-moz-background-size: 100%;
+  	-o-background-size: 100%;
+  	background-size: 100%;
+  	background-attachment: fixed;
+  	overflow: hidden;
+}
+
+.class-information {
+	height: 100%;
+	width: 35%;
+	float: left;
+	border-right: 2px solid black;
+	border-radius: 5px;
+	background-color: #78a795;
+}
+
+.class-information-title {
+	height: 15%;
+	width: 94%;
+	margin: 2%;
+	border: 2px solid black;
+	border-radius: 5px;
+	line-height: 2.5;
+	text-align: center;
+	font-size: large;
+	text-transform: uppercase;
+	letter-spacing: 1.2px;
+	color: white;
+	font-weight: 100;
+	font-family: 'Raleway', sans-serif;
+}
+
+.class-menu {
+	height: 15%;
+	width: 63%;
+	float: left;
+	border-radius: 5px;
+}
+
+.class-menu-inner {
+	margin: 1.4% 0;
+	height: 88%;
+	width: 90%;
+	border: 2px solid black;
+	float: left;
+	border-radius: 5px;
+	background-color: #78a795;
+	text-align: center;
+	font-size: small;
+	text-transform: uppercase;
+	letter-spacing: 1.3px;
+	color: white;
+	font-weight: 100;
+	font-family: 'Raleway', sans-serif;
+	line-height: 1.8;
+
+}
+
+.class-menu-inner-full {
+	margin: 1.4% 0;
+	height: 88%;
+	width: 90%;
+	border: 2px solid black;
+	float: left;
+	border-radius: 5px;
+	background-color: #78a795;
+	font-size: 80%;
+	letter-spacing: 1.3px;
+	color: white;
+	font-family: 'Raleway', sans-serif;
+	line-height: 2;
+}
+
+.class-menu-add {
+	height: 44%;
+	width: 7.4%;
+	border-radius: 50%;
+	margin-top: 5%;
+	margin-left: 1%;
+	background-color: white;
+	float: left;
+	border: 2px solid black;
+}
+
+.class-menu-add:hover {
+	transition: .2s all;
+	background-color: #78a795;
+	color: white;
+	cursor: pointer;
+}
+
+.fa-plus {
+	margin: 7% 18%;
+}
+
+.assignments {
+	height: 81.4%;
+	width: 64%;
+	float: left;
+	margin-top: 2%;
+	border-radius: 5px;
+	border: 2px solid black;
+	background-color: #78a795;
+	overflow-y: scroll;
+}
+
+.individual-class-information {
+	height: 35%;
+	width: 94%;
+	margin: 2%;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+#individual-class-information-title {
+	font-size: 120%;
+	text-align: center;
+	font-family: 'Raleway', sans-serif; 
+}
+
+.individual-class-information-data {
+	margin-left: 2%; 
+}
+
+
+.class-information-main{
+		height: 75%;
+		overflow-y: scroll;
+}
+
+a:hover {
+	text-decoration: normal;
+}
+
+
+li a:hover {
+		text-decoration: normal;
+				text-decoration: none;
+
+
+}
+.nav-button:hover {
+	color:red;
+		text-decoration: normal;
+
+}
+
+
+

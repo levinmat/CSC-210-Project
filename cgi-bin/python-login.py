@@ -5,22 +5,22 @@ import cgi
 import sqlite3
 import datetime
 import hashlib
-
+import os
+import Cookie
 
 cgitb.enable()
 login_form = cgi.FieldStorage()
 
 
-# Start creating the HTML that will be emitted to the client
-print 'Content-Type: text/html'
-print 
 
-print '''
+starter = """
 <html>
 <head>
 <title>Egenda Login</title>
-<link rel="icon" href="http://www.iconsdb.com/icons/preview/royal-blue/book-xxl.png">
-<link rel="stylesheet" type="text/css" href="/loginStyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,800i" rel="stylesheet">
+
+	<link rel="icon" href="favicon.png">
+<link rel="stylesheet" type="text/css" href="/styles.css">
 <style>
 body{
     background-image:
@@ -33,6 +33,10 @@ body{
   	background-attachment: fixed;
   	overflow: hidden;
   	background-color: orage;}
+  	h1 {
+  	color: white;
+  	font-size: 70;
+  	}
   	h2{
   	color: white;
   	font-size: 40;
@@ -42,9 +46,12 @@ body{
   	font-size: 20;
   	}
 </style>
+
+
 </head>
 <body>
-'''	
+"""
+
 # Open connection to the database
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
@@ -63,12 +70,6 @@ def encrypt(password, salt):
 	encrypted = hasher.hexdigest()
 	return encrypted
 
-# Method to add a user with a username and password, only called when username isn't already taken
-def add_user(username, password, salt):
-	# Inserts the user into the databse using safe ?'s to prevent injection attacks
-	# knows the username, encrypted password, and salt
-	c.execute('INSERT INTO users VALUES (?,?,?)', (username, password, salt))
-
 # Method to check if an attempted password matches the stored password for a username
 # Used at Login for existing accounts, not part of Milestone 2
 def authenticate(username, attempt):
@@ -86,50 +87,89 @@ def authenticate(username, attempt):
         	return True
         return False # Otherwise return False
 
+try:
+	r = login_form['remember'].value
+	rememberme = True		
+except KeyError:
+	rememberme = False
 
 # Graceful error handling if they filled out the form wrong
 try:
 	# Extract the desired username and password from the form
 	username = login_form['username'].value
-	password = login_form['password'].value	
-
+	password = login_form['password'].value
+	
 	# Gets all of the entries in the database that match the username
 	currentEntries = c.execute('SELECT * FROM users WHERE username = ?', [username])
 	data = c.fetchall()
 
 	if len(data) == 0: # If there is no entry yet...
 		# We create a new account and emit success and welcome message to HTML
-
+		print 'Content-Type: text/html'
+		print 
+		print starter
 		print '<div class="loggedin-form-title">'
-		print '<h1>Account succesfully created!</h1>'
+		print '<h2>Account not found!</h2>'
 		print '</div>'
 		print '<div class="loggedin-form-inner">'
-		print '<h2>Welcome, ' + username + '!</h2>'
+		print '<h2><a href="../create-account.html">Create a new account</a>, <br> or <a href="../index.html">try again.</a></h2>'
 		print '</div>'
-		salt = str(datetime.datetime.now) # Use timestamp as salt, using datetime library
-		password = encrypt(password, salt) # Encrypts the given password using hashlib and function above
-		add_user(username, password, salt) # Adds the user to the database using above method
 	else: # If there is an entry already they are trying to log in...
 		# This is all for logging into an existing account which will be seperate for future milestones
 		if authenticate(username, password): # If the given password is correct...
-			print '<div class="loggedin-form-title">'
-			print '<h1>Welcome, ' + username +"!</h1>" # Welcome the existing user to their account
-			print '</div>'
-			print '<div class="loggedin-form-inner">'
-			print '<h2>You have succesfully logged into your account!</h2>'
-			print '<p>You currently do not have any assignments.</p>'
-			print '</div>'
+			# Set Cookie here
+			# cookie['userid'] = str(username)
+			if(rememberme):
+				cookie = Cookie.SimpleCookie()
+				timestamp = datetime.datetime.now()
+				expireDate = timestamp + datetime.timedelta(days=5)
+				cookie['userid'] = str(username)
+				cookie['userid']['path']="/"
+				cookie['userid']['expires']=str(expireDate.timetuple())
+				cookie['remembered'] = 'True'
+				cookie['remembered']['path']="/"
+				cookie['remembered']['expires']=str(expireDate.timetuple())
+				#cookie['domain'] = 'localhost'
+				print cookie
+			else:
+				cookie = Cookie.SimpleCookie()
+				timestamp = datetime.datetime.now()
+				expireDate = timestamp + datetime.timedelta(days=5)
+				cookie['userid'] = str(username)
+				cookie['userid']['path']="/"
+				cookie['userid']['expires']=str(expireDate.timetuple())
+				cookie['remembered'] = 'False'
+				cookie['remembered']['path']="/"
+				cookie['remembered']['expires']=str(expireDate.timetuple())
+				#cookie['domain'] = 'localhost'
+				print cookie
+			print 'Location: ../home.html'
+			#print starter
+			#print "<h1> WOW " + str(cookie) + "</h1>"
+			# print '<div class="loggedin-form-title">'
+			# print '<h1>Welcome, ' + username +"!</h1>" # Welcome the existing user to their account
+			# print '</div>'
+			# print '<div class="loggedin-form-inner">'
+			# print '<h2>You have succesfully logged into your account!</h2>'
+			# print '<p>You currently do not have any assignments.</p>'
+			# print '</div>'
 		else: # If the given password is incorrect...
+			print 'Content-Type: text/html'
+			print 
+			print starter
 			print '<div class="loggedin-form-title">'
 			print '<h1>Incorrect Password!</h1>'
 			print '</div>'
 			print '<div class="loggedin-form-inner">'
-			print '<h2>Go back and try again or create a new account with a different username.</h2>'
+			print '<h2><a href="../index.html">Go back and try again,</a> or <br><a href="../create-account.html">create a new account.</a></h2>'
 			print '</div>'
 except KeyError: # If they didn't fill out the form correctly
+	print 'Content-Type: text/html'
+	print
+	print starter
 	print '<div class="loggedin-form-title">'
 	print '<h1>No password or username entered!</h1>'
-	print '<h2>Go back and try again.</h2>'
+	print '<h2><a href="../index.html">Go back and try again.</a></h2>'
 	print '</div>'
 
 # Close the connection to the database and commits changes

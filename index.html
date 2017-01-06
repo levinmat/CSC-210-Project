@@ -1,0 +1,49 @@
+<html>
+<head>
+	<link rel="icon" href="favicon.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800,800i" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="loginStyle.css">
+<script src="login.js">
+
+</script>
+	<title>Egenda Login</title>
+	
+</head>
+<body onload="checkCookie()">
+	<!-- SEARCH FOR COOKIE, REDIRECT TO MAIN.HTML IF COOKIE FOUND-->
+	<div class="document">
+		<div class="login-form">
+			<div class="login-form-title">
+				<h1>Egenda</h1>
+			</div><br>
+
+
+			<!-- Form that sends its data to the python script -->
+			<!-- Uses a POST request so the data is not shown in the URL -->
+			<div class="login-form-inner">
+				<form method="POST" action="/cgi-bin/python-login.py">
+					<!-- <p>Username (required): </p><br> -->
+					<div class="login-form-inner-text">
+						<input class="textinput" type="text" name="username" placeholder=" Username" id="usernameText">
+						<br>
+						<!-- <p>Password (required): </p><br> -->
+						<input class="textinput" type="password" name="password" placeholder=" Password" id="passwordText">
+						<button class="submit"  id="submitButton" name="name" value="value" type="submit">Log In</button>
+						<br>
+						<div id="createAccountButton">
+							<a href="create-account.html">New Account</a>
+						</div>
+						<label for="checkbox"><div id="rememberbox">
+							Remember Me<input id="checkbox" type="checkbox" name="remember" class="remember"></input>
+						</div></label>
+
+					</div>
+				</form>	
+
+			</div>
+
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</html>

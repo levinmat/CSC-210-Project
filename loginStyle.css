@@ -1,30 +1,58 @@
-body {
-        background-image:
-        linear-gradient(rgba(0, 0, 50, 0.3), rgba(0, 0, 0, 0.1)), 
-        url('login-background.jpg');
-    -webkit-background-size: 100%;
-  	-moz-background-size: 100%;
-  	-o-background-size: 100%;
-  	background-size: 100%;
-  	background-attachment: fixed;
-  	overflow: hidden;
+@font-face {
+	font-family: 'Raleway', sans-serif;
+
 }
 
-textarea:hover, input:hover, 
-textarea:active, input:active, 
+body {
+	background-image:
+	linear-gradient(rgba(0, 0, 50, 0.3), rgba(0, 0, 0, 0.1)), 
+	url('login-background.jpg');
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	background-attachment: fixed;
+	overflow: hidden;
+	font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', sans-serif;
+}
+p, div {
+	font-family: 'Raleway', sans-serif;
+}
+
+.container {
+	font-family: 'Raleway', sans-serif;
+}
+
+
+textarea:active,  
 textarea:focus, input:focus,
 button:focus, button:active,
 button:hover, label:focus,
 .btn:active, .btn.active {
-    outline:0px !important;
-    -webkit-appearance:none;
+	outline:0px !important;
+
 }
+.navbar{
+	background-image: -webkit-gradient(
+		linear, left top, left bottom, from(rgba(50,0,50,0.1)),
+		to(rgba(80,80,80,0.2)), color-stop(0,#5b4937));
+	opacity: 0.93;
+	border: 1px solid rgba(0,0,0,0.1);
+	font-family: 'Raleway', sans-serif;
+
+}
+
 
 .login-form {
 	height: 35%;
 	width: 40%;
 	margin: auto;
 	margin-top: 15%;
+
 }
 
 .login-form-title {
@@ -62,6 +90,7 @@ button:hover, label:focus,
 	width: 50%;
 	margin: auto;
 	text-align: center;
+
 	color: #638c7d;
 
 }
@@ -90,7 +119,18 @@ button:hover, label:focus,
 	transition: all .35s;
 }
 
+#confirmPassword {
+	height: 45%;
+	width: 100%;
+	border-radius: 10px;
+	border: 2px solid #78a795;
+	margin: .3%;
+	transition: all .35s;
+}
+
+
 #submitButton {
+	
 	height: 40%;
 	width: 100%;
 	border: none;
@@ -104,6 +144,94 @@ button:hover, label:focus,
 	transition: all .25s;
 }
 
+
+#createAccountButton {
+	padding-top: 5;
+	text-align: center;
+	height: 40%;
+	width: 100%;
+	border: none;
+	margin: .3%;
+	background-color: #5b4937;
+	border-radius: 10px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 110%; 
+	color: white;
+	transition: all .25s;
+}
+
+a {
+	text-decoration: none;
+	font-style: italic;
+	border-width: 1;
+}
+
+
+
+
+input {
+	padding-left: 10;
+	margin-left: 10;
+}
+
+input:hover {
+	text-decoration: none;
+	box-shadow: 0.5pt 0 0pt 1pt #597c6f;
+
+}
+
+#textinput:hover {
+	border-radius: 10;
+	border-style: normal;
+
+
+}
+
+#newAccountLabel
+{
+	color: white;
+	text-align: center;
+	padding-top: 15;
+}
+
+
+#submitButton:hover, #createAccountButton:hover, #rememberbox:hover, #rememberbox:checked{
+	color:#5b4937;
+	background-color: #597c6f;
+
+}
+
+#createAccountButton a {
+	color: white;
+	font-style: normal;
+}
+
+#createAccountButton:hover a {
+	color:#5b4937;
+}
+
+
+#rememberbox {
+	color: white;
+	background-color: #5b4937;
+	border-radius: 10px;
+	padding: 6;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 100%; 
+	text-align: center;
+	width: 92%;
+	float: left;
+	margin-right: 10%;
+}
+
+
+
+input:checked {
+	color:red;
+	background-color: red;
+}
 
 
 
